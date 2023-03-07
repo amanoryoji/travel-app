@@ -5,9 +5,13 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/builder-vite": "^0.4.2",
+    "@storybook/vue3": "^6.5.16",
     "nuxt": "^3.2.3"
   }
 }
