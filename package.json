@@ -5,9 +5,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest"
   },
   "devDependencies": {
-    "nuxt": "^3.2.3"
+    "jsdom": "^21.1.0",
+    "nuxt": "^3.2.3",
+    "vitest": "^0.29.2"
+  },
+  "dependencies": {
+    "@types/jest": "^29.4.0"
   }
 }
