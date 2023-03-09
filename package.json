@@ -6,11 +6,16 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest"
+    "test": "vitest",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/builder-vite": "^0.4.2",
+    "@storybook/vue3": "^6.5.16",
     "jsdom": "^21.1.0",
     "nuxt": "^3.2.3",
+    "storybook-builder-vite": "^0.1.23",
     "vitest": "^0.29.2"
   },
   "dependencies": {
