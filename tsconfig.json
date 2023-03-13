@@ -4,6 +4,6 @@
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": true,
-    "types": ["vitest", "node", "@types/jest"]
+    "types": ["@nuxt/types", "vitest", "@types/node", "node", "@types/jest"]
   }
 }
