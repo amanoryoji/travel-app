@@ -1,3 +1,7 @@
+// import { config } from "@vue/test-utils";
+
+const { mergeConfig } = require("vite");
+
 module.exports = {
   stories: [
     "../stories/**/*.stories.mdx",
@@ -7,5 +11,16 @@ module.exports = {
   framework: "@storybook/vue3",
   core: {
     builder: "@storybook/builder-vite",
+  },
+  viteFinal: async (config) => {
+    return mergeConfig(config, {
+      css: {
+        preprocessorOptions: {
+          scss: {
+            additionalData: '@import "/assets/scss/index.scss";',
+          },
+        },
+      },
+    });
   },
 };

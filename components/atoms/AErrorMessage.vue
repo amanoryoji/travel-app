@@ -1,8 +1,7 @@
 <script lang="ts">
 type FontSize = "lg" | "md" | "sm";
 
-export default defineComponent({
-  name: "AErrorMessage",
+export default {
   props: {
     message: {
       type: String,
@@ -15,11 +14,11 @@ export default defineComponent({
   setup() {
     return {};
   },
-});
+};
 </script>
 
 <template>
-  <p
+  <!-- <p
     v-if="message"
     class="el_errorMessage"
     :class="[
@@ -28,7 +27,8 @@ export default defineComponent({
     ]"
   >
     {{ message }}
-  </p>
+  </p> -->
+  <p class="el_errorMessage">{{ message }}sss</p>
 </template>
 
 <style lang="scss" scoped>
