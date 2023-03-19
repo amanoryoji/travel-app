@@ -1,5 +1,3 @@
-// import { config } from "@vue/test-utils";
-
 const { mergeConfig } = require("vite");
 
 module.exports = {
