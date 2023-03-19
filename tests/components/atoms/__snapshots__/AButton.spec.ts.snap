@@ -1,0 +1,147 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AButton > スナップショット > icon > account_circle 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__md\\"><img data-v-70506b90=\\"\\" class=\\"bl_button_icon\\" src=\\"/images/icon/account_circle.svg\\" alt=\\"\\"><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > icon > not found 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__md\\"><img data-v-70506b90=\\"\\" class=\\"bl_button_icon\\" src=\\"/path_to_image\\" alt=\\"\\"><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > isIconRight > false 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__md\\"><img data-v-70506b90=\\"\\" class=\\"bl_button_icon\\" src=\\"/images/icon/account_circle.svg\\" alt=\\"\\"><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > isIconRight > true 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__md\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span><img data-v-70506b90=\\"\\" src=\\"/images/icon/account_circle.svg\\" alt=\\"\\">
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > size > lg 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__lg\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > size > md 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__md\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > size > sm 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__sm\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > variant > outline-primary 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__outline-primary\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > variant > outline-secondary 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__outline-secondary\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > variant > outline-tertiary 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__outline-tertiary\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > variant > primary 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__primary\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > variant > secondary 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__secondary\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > variant > tertiary 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__tertiary\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > 全Prop指定 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__seconcary bl_button__lg bl_button__pill bl_button__block bl_button__full bl_button__disabled\\" disabled=\\"\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;
+
+exports[`AButton > スナップショット > 必須Propのみ 1`] = `
+"<button data-v-70506b90=\\"\\" type=\\"button\\" class=\\"bl_button bl_button__primary bl_button__md\\">
+  <!--v-if--><span data-v-70506b90=\\"\\" class=\\"bl_button_label\\">ボタン名</span>
+  <!--v-if-->
+  <!-- <div v-show=\\"loading\\" class=\\"bl_button_loadingSpinner\\">
+      <LoadingSpinner size=\\"xxsm\\" />
+    </div> -->
+</button>"
+`;

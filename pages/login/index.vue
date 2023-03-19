@@ -5,6 +5,8 @@ const userEmail = ref("");
 const userPassWord = ref("");
 
 const login = function (userEmail: string, userPassWord: string) {
+  console.log(userEmail);
+  console.log(userPassWord);
   signIn(userEmail, userPassWord);
 };
 </script>
@@ -12,10 +14,22 @@ const login = function (userEmail: string, userPassWord: string) {
 <template>
   <div>
     <p>メールアドレス</p>
-    <input v-model="userEmail" type="text" />
+    <MTextInput
+      :model-value="userEmail"
+      type="text"
+      placeholder="info@hoge.tld"
+      error-message="エラーメッセージです"
+      @update:model-value="(newValue) => (userEmail = newValue)"
+    />
     <p>パスワード</p>
-    <input v-model="userPassWord" type="text" />
-    <button @click="login(userEmail, userPassWord)">ログイン</button>
+    <MTextInput
+      :model-value="userPassWord"
+      type="password"
+      placeholder="****"
+      error-message="エラーメッセージです"
+      @update:model-value="(newValue) => (userPassWord = newValue)"
+    />
+    <AButton label="ログイン" @click.enter="login(userEmail, userPassWord)" />
     <NuxtLink to="/register">新規会員登録はこちら</NuxtLink>
   </div>
 </template>

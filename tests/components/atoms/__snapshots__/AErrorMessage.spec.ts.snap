@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ErrorMessage > スナップショット > fontSize > lg 1`] = `"<!--v-if-->"`;
+
+exports[`ErrorMessage > スナップショット > fontSize > md 1`] = `"<!--v-if-->"`;
+
+exports[`ErrorMessage > スナップショット > fontSize > sm 1`] = `"<!--v-if-->"`;
+
+exports[`ErrorMessage > スナップショット > デフォルト値 1`] = `"<!--v-if-->"`;
+
+exports[`ErrorMessage > スナップショット > 全propを指定 1`] = `"<p data-v-06d1af55=\\"\\" class=\\"el_errorMessage el_errorMessage__lg\\">myMessag</p>"`;

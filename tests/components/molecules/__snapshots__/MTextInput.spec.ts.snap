@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseTextInput > スナップショット > type > number 1`] = `
+"<div data-v-16163742=\\"\\" class=\\"ly_textInputWrapper\\"><input data-v-16163742=\\"\\" class=\\"el_textInput el_textInput__error\\" type=\\"number\\" placeholder=\\"\\">
+  <aerrormessage data-v-16163742=\\"\\" font-size=\\"sm\\" class=\\"ly_errorMessage\\"></aerrormessage>
+</div>"
+`;
+
+exports[`BaseTextInput > スナップショット > type > text 1`] = `
+"<div data-v-16163742=\\"\\" class=\\"ly_textInputWrapper\\"><input data-v-16163742=\\"\\" class=\\"el_textInput el_textInput__error\\" type=\\"text\\" placeholder=\\"\\">
+  <aerrormessage data-v-16163742=\\"\\" font-size=\\"sm\\" class=\\"ly_errorMessage\\"></aerrormessage>
+</div>"
+`;
+
+exports[`BaseTextInput > スナップショット > デフォルト値 1`] = `
+"<div data-v-16163742=\\"\\" class=\\"ly_textInputWrapper\\"><input data-v-16163742=\\"\\" class=\\"el_textInput el_textInput__error\\" type=\\"text\\" placeholder=\\"\\">
+  <aerrormessage data-v-16163742=\\"\\" font-size=\\"sm\\" class=\\"ly_errorMessage\\"></aerrormessage>
+</div>"
+`;
+
+exports[`BaseTextInput > スナップショット > 全propを指定 1`] = `
+"<div data-v-16163742=\\"\\" class=\\"ly_textInputWrapper\\" value=\\"abc123\\"><input data-v-16163742=\\"\\" class=\\"el_textInput el_textInput__block el_textInput__error\\" type=\\"text\\" placeholder=\\"myPlaceholder\\" pattern=\\"^[0-9A-Za-z]+$\\">
+  <aerrormessage data-v-16163742=\\"\\" font-size=\\"sm\\" class=\\"ly_errorMessage\\" message=\\"errorMessage\\"></aerrormessage>
+</div>"
+`;

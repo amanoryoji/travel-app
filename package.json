@@ -29,12 +29,14 @@
     "jsdom": "^21.1.0",
     "nuxt": "^3.2.3",
     "sass": "^1.59.3",
+    "sass-loader": "^13.2.1",
     "storybook-builder-vite": "^0.1.23",
     "typescript": "^4.9.5",
     "vitest": "^0.29.2"
   },
   "dependencies": {
     "@types/jest": "^29.4.0",
+    "@vue/test-utils": "^2.3.1",
     "prettier": "^2.7.1"
   }
 }

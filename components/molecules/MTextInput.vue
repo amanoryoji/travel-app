@@ -1,17 +1,14 @@
 <script lang="ts">
-export default defineComponent({
-  name: "MTextInput",
+import { computed, PropType } from "vue";
+export default {
   props: {
     /** 入力欄の種類 */
     type: {
       type: String as PropType<"text" | "number" | "password">,
       default: () => "text",
     },
-    /**
-     * 入力欄にバインドする値
-     * 親から.sync修飾子で値を渡すことで値の変更を反映させる
-     * */
-    value: {
+    /** 入力欄にバインドする値 */
+    modelValue: {
       type: [String, Number],
       default: () => "",
     },
@@ -38,13 +35,14 @@ export default defineComponent({
       type: String,
     },
   },
+  emits: ["update:modelValue", "focus", "blur", "change"],
   setup(props, { emit }) {
     const model = computed({
-      get: () => props.value,
+      get: () => props.modelValue,
       set: (newValue) => {
         // 数値型なら数値に変更
         const value = props.type === "number" ? Number(newValue) : newValue;
-        emit("update:value", value);
+        emit("update:modelValue", value);
       },
     });
 
@@ -52,22 +50,23 @@ export default defineComponent({
       model,
     };
   },
-});
+};
 </script>
 
 <template>
   <div class="ly_textInputWrapper">
     <input
-      v-model="model"
+      :value="model"
       class="el_textInput"
       :type="type"
       :placeholder="placeholder"
       :pattern="pattern"
       :class="[
         { el_textInput__block: block },
-        { el_textInput__error: errorMessage },
+        { el_textInput__error: !modelValue },
       ]"
       :disabled="disabled"
+      @input="$emit('update:modelValue', $event.target.value)"
       @focus="$emit('focus')"
       @blur="$emit('blur')"
       @change="$emit('change', $event.target.value)"
