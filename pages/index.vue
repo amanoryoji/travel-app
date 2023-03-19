@@ -9,7 +9,7 @@ const logout = function () {
 <template>
   <div>
     <MTextInput error-message="エラーメッセージです" />
-    <AButton status="ログアウト" @click="logout" />
+    <AButton label="ログアウト" @click="logout" />
     <NuxtLink to="/register">新規会員登録はこちら</NuxtLink>
   </div>
 </template>
