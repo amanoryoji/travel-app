@@ -6,7 +6,7 @@ const userPassWord = ref("");
 
 const register = function () {
   console.log("クリック");
-  signUp("", "");
+  signUp("test121@gmail.com", "test1111");
 };
 </script>
 
