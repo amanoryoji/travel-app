@@ -5,8 +5,6 @@ const userEmail = ref("");
 const userPassWord = ref("");
 
 const login = function (userEmail: string, userPassWord: string) {
-  console.log(userEmail);
-  console.log(userPassWord);
   signIn(userEmail, userPassWord);
 };
 </script>
