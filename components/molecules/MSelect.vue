@@ -57,7 +57,7 @@ export default {
       type: String,
     },
   },
-  emits: ["change", "update:value"],
+  emits: ["change", "update:modelValue"],
   setup(props, { emit }) {
     // NOTE: option.valueとvalueで型が違うと比較できない
     const formattedOptions = computed(() =>
@@ -83,7 +83,7 @@ export default {
       }
 
       emit("change", newValue);
-      emit("update:value", newValue);
+      emit("update:modelValue", newValue);
     };
 
     return {

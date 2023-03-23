@@ -14,10 +14,13 @@ const meta: Meta<typeof MSelect> = {
     template: "<MSelect v-bind='args' />",
   }),
   args: {
-    options:[ { label: 1, value: 1}, { label: 2, value: 2}],
+    options:[
+      { label: "東京都", value: "tokyo"},
+      { label: "埼玉県", value: "saitama"}],
   },
   argTypes: {
     onChange: { actions: "change" },
+    updateModelValue: {actions: "updateModalValue"}
   },
 };
 

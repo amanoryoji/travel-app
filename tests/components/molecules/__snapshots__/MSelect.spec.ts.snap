@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseTextInput > スナップショット > デフォルト値 1`] = `
+"<div data-v-88b2c7b3=\\"\\" class=\\"ly_selectWrapper el_selectWrapper\\"><select data-v-88b2c7b3=\\"\\" class=\\"el_select el_select__md\\">
+    <option data-v-88b2c7b3=\\"\\" hidden=\\"\\" value=\\"\\">選択してください</option>
+  </select>
+  <aerrormessage data-v-88b2c7b3=\\"\\" font-size=\\"sm\\" class=\\"ly_errorMessage\\"></aerrormessage>
+</div>"
+`;
+
+exports[`BaseTextInput > スナップショット > 全propを指定 1`] = `
+"<div data-v-88b2c7b3=\\"\\" class=\\"ly_selectWrapper el_selectWrapper el_selectWrapper__block el_selectWrapper__error\\"><select data-v-88b2c7b3=\\"\\" class=\\"el_select el_select__md\\">
+    <option data-v-88b2c7b3=\\"\\" hidden=\\"\\" value=\\"\\">選択してください</option>
+  </select>
+  <aerrormessage data-v-88b2c7b3=\\"\\" font-size=\\"sm\\" class=\\"ly_errorMessage\\" message=\\"errorMessage\\"></aerrormessage>
+</div>"
+`;

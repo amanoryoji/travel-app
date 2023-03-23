@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-  <!-- <p
+  <p
     v-if="message"
     class="el_errorMessage"
     :class="[
@@ -27,8 +27,7 @@ export default {
     ]"
   >
     {{ message }}
-  </p> -->
-  <p class="el_errorMessage">{{ message }}sss</p>
+  </p>
 </template>
 
 <style lang="scss" scoped>
