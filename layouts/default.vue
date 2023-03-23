@@ -3,5 +3,8 @@ const { isLoginLoading } = useAuth();
 </script>
 
 <template>
-  <div v-if="isLoginLoading"><slot /></div>
+  <div v-if="isLoginLoading">
+    <OGlobalNav />
+    <slot />
+  </div>
 </template>
