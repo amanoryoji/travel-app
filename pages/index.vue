@@ -1,5 +1,18 @@
 <script lang="ts" setup>
 import { onMounted, watch } from "vue";
+// import { useRouter } from "vue-router";
+
+const {
+  middleClassCode,
+  smallClassCode,
+  detailClassCode,
+  getAreaCode,
+  getLargeCode,
+  getMiddleCode,
+  getSmallCode,
+  getVacantHotel,
+  keyWordSearch,
+} = useTravelApi();
 
 const inputKeyword = ref("");
 
@@ -15,21 +28,20 @@ const detailCode = ref("");
 /** セレクトボックスのボタンの有効か無効かの確認 */
 const isSelectButton = ref(true);
 
-const {
-  middleClassCode,
-  smallClassCode,
-  detailClassCode,
-  getAreaCode,
-  getLargeCode,
-  getMiddleCode,
-  getSmallCode,
-  getVacantHotel,
-  keyWordSearch,
-} = useTravelApi();
+// const router = useRouter();
 
 /** 空室検索API */
-const vacantHotel = function () {
-  getVacantHotel(middleCode.value, smallCode.value, detailCode.value);
+const vacantHotel = async function () {
+  // router.push({ path: "yado", props: { message: "propsが渡される" } });
+  const targetScrollPosition = document
+    .getElementById("scroll")
+    ?.getBoundingClientRect();
+
+  await getVacantHotel(middleCode.value, smallCode.value, detailCode.value);
+  window.scrollTo({
+    top: targetScrollPosition?.top,
+    behavior: "smooth",
+  });
 };
 
 watch(middleCode, () => {
@@ -111,9 +123,12 @@ onMounted(async () => {
       "
     />
     <AButton
+      style="margin-bottom: 2000px"
       label="空室ホテル"
       :disabled="isSelectButton"
       @click="vacantHotel"
     />
+
+    <div id="scroll">ここまでスクロール</div>
   </div>
 </template>
