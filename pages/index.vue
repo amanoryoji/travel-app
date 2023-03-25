@@ -1,11 +1,15 @@
 <script lang="ts" setup>
 import { onMounted, watch } from "vue";
-// import { useRouter } from "vue-router";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const {
   middleClassCode,
   smallClassCode,
   detailClassCode,
+  getHotel,
+  pageCount,
   getAreaCode,
   getLargeCode,
   getMiddleCode,
@@ -13,8 +17,6 @@ const {
   getVacantHotel,
   keyWordSearch,
 } = useTravelApi();
-
-const inputKeyword = ref("");
 
 /** 県の地区コード */
 const middleCode = ref("");
@@ -28,19 +30,46 @@ const detailCode = ref("");
 /** セレクトボックスのボタンの有効か無効かの確認 */
 const isSelectButton = ref(true);
 
-// const router = useRouter();
+const inputKeyword = ref("");
 
 /** 空室検索API */
 const vacantHotel = async function () {
-  // router.push({ path: "yado", props: { message: "propsが渡される" } });
   const targetScrollPosition = document
     .getElementById("scroll")
     ?.getBoundingClientRect();
 
-  await getVacantHotel(middleCode.value, smallCode.value, detailCode.value);
+  router.push({
+    path: "/",
+    query: {
+      middle: middleCode.value,
+      small: smallCode.value,
+      detail: detailCode.value,
+      page: 1,
+    },
+  });
+  await getVacantHotel(middleCode.value, smallCode.value, detailCode.value, 1);
   window.scrollTo({
     top: targetScrollPosition?.top,
     behavior: "smooth",
+  });
+};
+
+/** ページネーションクリック */
+const pagination = async function (link: number) {
+  await getVacantHotel(
+    middleCode.value,
+    smallCode.value,
+    detailCode.value,
+    link
+  );
+  router.push({
+    path: "/",
+    query: {
+      middle: middleCode.value,
+      small: smallCode.value,
+      detail: detailCode.value,
+      page: link,
+    },
   });
 };
 
@@ -53,6 +82,7 @@ watch(middleCode, () => {
 watch(smallCode, () => {
   getSmallCode(middleCode.value, smallCode.value);
   detailCode.value = "";
+  // FIXME:こちらのソースは改善できないかをみる
   if (
     smallCode.value !== "" &&
     smallCode.value !== "sapporo" &&
@@ -122,13 +152,33 @@ onMounted(async () => {
         }
       "
     />
+
     <AButton
-      style="margin-bottom: 2000px"
       label="空室ホテル"
       :disabled="isSelectButton"
       @click="vacantHotel"
     />
 
-    <div id="scroll">ここまでスクロール</div>
+    <APagination :items="Number(pageCount)" @click="pagination" />
+
+    <ul
+      v-for="hotel in getHotel"
+      id="scroll"
+      :key="hotel.hotel[0].hotelBasicInfo.hotelNo"
+    >
+      <li>
+        <pre>
+          {{ hotel }}
+        <!-- {{ hotel.hotel[0].hotelBasicInfo }} -->
+        </pre>
+        <NuxtLink
+          :to="{
+            path: '/hotel',
+            query: { hotelNo: hotel.hotel[0].hotelBasicInfo.hotelNo },
+          }"
+          >詳細へ</NuxtLink
+        >
+      </li>
+    </ul>
   </div>
 </template>

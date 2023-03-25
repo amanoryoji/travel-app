@@ -5,25 +5,16 @@ type areaCode = {
   value: string;
 };
 
-// type middleClass = {
-//   middleClassCode: string;
-//   middleClassName: string;
-// };
-
-// type smallClassArray = [smallClass];
-
-// type smallClasses = Array<smallClass>;
-
-// type middleClasses = [middleClass, smallClasses];
-
-// type getAreaResponse = Array<middleClasses>;
-
 export const useTravelApi = () => {
   const middleClassCode: Ref<areaCode[]> = ref([]);
   const smallClassCode: Ref<areaCode[]> = ref([]);
   const detailClassCode: Ref<areaCode[]> = ref([]);
 
   const getAreaResponse: Ref<any[]> = ref([]);
+
+  const getHotel = ref([]);
+
+  const pageCount = ref("");
 
   /** 地区コード取得 */
   async function getAreaCode() {
@@ -34,12 +25,13 @@ export const useTravelApi = () => {
           params: {
             applicationId: "1056638830656016957",
             format: "json",
+            formatVersion: 2,
           },
         }
       )
       .then((response) => {
         getAreaResponse.value =
-          response.data.areaClasses.largeClasses[0].largeClass[1].middleClasses;
+          response.data.areaClasses.largeClasses[0][1].middleClasses;
       });
   }
 
@@ -107,10 +99,16 @@ export const useTravelApi = () => {
   }
 
   /** 空室検索API */
-  async function getVacantHotel(large: string, middle: string, small: string) {
+  async function getVacantHotel(
+    large: string,
+    middle: string,
+    small: string,
+    page1: number
+  ) {
     await axios
       .get(
-        "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426",
+        // "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426",
+        "https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426",
         {
           params: {
             applicationId: "1056638830656016957",
@@ -119,12 +117,17 @@ export const useTravelApi = () => {
             middleClassCode: large,
             smallClassCode: middle,
             detailClassCode: small,
+            checkinDate: '2023-04-01',
+            checkoutDate: '2023-04-02',
             sort: "standard", // おすすめ順でsortできる
+            page: page1,
+            hits: 20,
           },
         }
       )
       .then((response) => {
-        console.log(response);
+        getHotel.value = response.data.hotels;
+        pageCount.value = response.data.pagingInfo.pageCount;
       })
       .catch((error) => {
         alert(error);
@@ -132,7 +135,7 @@ export const useTravelApi = () => {
   }
 
   /** キーワード検索API */
-  async function keyWordSearch(inputKeyword) {
+  async function keyWordSearch(inputKeyword: string) {
     await axios
       .get(
         "https://app.rakuten.co.jp/services/api/Travel/KeywordHotelSearch/20170426",
@@ -145,9 +148,36 @@ export const useTravelApi = () => {
         }
       )
       .then((response) => {
+        getHotel.value = response.data.hotels;
         console.log(response);
       })
       .catch((error) => {
+        alert(error);
+      });
+  }
+
+  /** 詳細ページの空室検索API */
+  async function targetVacantHotel(targetHotelNo: number) {
+    await axios
+      .get(
+        "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426",
+        // "https://app.rakuten.co.jp/services/api/Travel/HotelDetailSearch/20170426",
+        {
+          params: {
+            applicationId: "1056638830656016957",
+            format: "json",
+            checkinDate: '2023-04-01',
+            checkoutDate: '2023-04-02',
+            hotelNo: targetHotelNo,
+          },
+        }
+      )
+      .then((response) => {
+        getHotel.value = response.data.hotels[0].hotel;
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
         alert(error);
       });
   }
@@ -156,11 +186,14 @@ export const useTravelApi = () => {
     middleClassCode,
     smallClassCode,
     detailClassCode,
+    getHotel,
+    pageCount,
     getAreaCode,
     getLargeCode,
     getMiddleCode,
     getSmallCode,
     getVacantHotel,
     keyWordSearch,
+    targetVacantHotel,
   };
 };
