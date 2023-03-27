@@ -10,6 +10,7 @@ const isLoginLoading = ref(false);
 
 export const useAuth = () => {
   const token = useState<string>("token", () => "");
+  const isLoginAlert = ref(false);
 
   /** 新規会員登録 */
   async function signUp(email: string, password: string) {
@@ -20,7 +21,9 @@ export const useAuth = () => {
           resolve();
           navigateTo("/");
         })
-        .catch(reject);
+        .catch(() => {
+          isLoginAlert.value = true;
+        });
     });
   }
 
@@ -40,7 +43,9 @@ export const useAuth = () => {
             })
             .catch(reject);
         })
-        .catch(reject);
+        .catch(() => {
+          isLoginAlert.value = true;
+        });
     });
   }
 
@@ -92,11 +97,12 @@ export const useAuth = () => {
   }
 
   return {
+    token,
+    isLoginAlert,
+    isLoginLoading,
     signUp,
     signIn,
     signOut,
-    token,
     checkAuthState,
-    isLoginLoading,
   };
 };
