@@ -73,15 +73,19 @@ const pagination = async function (link: number) {
   });
 };
 
-watch(middleCode, () => {
+watch(middleCode, (_, oldVal) => {
   getMiddleCode(middleCode.value);
-  smallCode.value = "";
-  isSelectButton.value = true;
+  if (oldVal) {
+    smallCode.value = "";
+    isSelectButton.value = true;
+  }
 });
 
-watch(smallCode, () => {
-  getSmallCode(middleCode.value, smallCode.value);
-  detailCode.value = "";
+watch(smallCode, async (_, oldVal) => {
+  await getSmallCode(middleCode.value, smallCode.value);
+  if (oldVal) {
+    detailCode.value = "";
+  }
   // FIXME:こちらのソースは改善できないかをみる
   if (
     smallCode.value !== "" &&
@@ -102,9 +106,29 @@ watch(detailCode, () => {
   }
 });
 
+const onMountTravel = async function () {
+  if (
+    router.currentRoute.value.query.middle &&
+    router.currentRoute.value.query.small
+  ) {
+    middleCode.value = router.currentRoute.value.query.middle as string;
+    smallCode.value = router.currentRoute.value.query.small as string;
+    detailCode.value = router.currentRoute.value.query.detail as string;
+
+    await getVacantHotel(
+      middleCode.value,
+      smallCode.value,
+      detailCode.value,
+      Number(router.currentRoute.value.query.page)
+    );
+  }
+  isSelectButton.value = false;
+};
+
 onMounted(async () => {
   await getAreaCode();
   getLargeCode();
+  onMountTravel();
 });
 </script>
 
@@ -135,11 +159,7 @@ onMounted(async () => {
       :options="smallClassCode"
       :value="smallCode"
       :disabled="!middleCode"
-      @change="
-        (val) => {
-          smallCode = val;
-        }
-      "
+      @update:model-value="(newValue) => (smallCode = newValue)"
     />
 
     <MSelect
@@ -161,23 +181,46 @@ onMounted(async () => {
 
     <APagination :items="Number(pageCount)" @click="pagination" />
 
-    <ul
-      v-for="hotel in getHotel"
-      id="scroll"
-      :key="hotel.hotel[0].hotelBasicInfo.hotelNo"
-    >
-      <li>
-        <pre>
-          {{ hotel }}
-        <!-- {{ hotel.hotel[0].hotelBasicInfo }} -->
-        </pre>
-        <NuxtLink
-          :to="{
-            path: '/hotel',
-            query: { hotelNo: hotel.hotel[0].hotelBasicInfo.hotelNo },
-          }"
-          >詳細へ</NuxtLink
-        >
+    <ul id="scroll" class="bl_cardUnit" style="display: flex; flex-wrap: wrap">
+      <li
+        v-for="hotel in getHotel"
+        :key="hotel.hotel[0].hotelBasicInfo.hotelNo"
+        class="bl_card"
+        style="display: flex"
+      >
+        <div class="bl_card_img" style="width: 50%">
+          <figure class="bl_card_imgWrapper">
+            <img
+              :src="hotel.hotel[0].hotelBasicInfo.hotelImageUrl"
+              :alt="hotel.hotel[0].hotelBasicInfo.hotelName"
+              style="width: 100%; height: auto"
+            />
+          </figure>
+        </div>
+        <div class="bl_card_body">
+          <h3 class="bl_card_title">
+            {{ hotel.hotel[0].hotelBasicInfo.hotelName }}
+          </h3>
+          <p class="bl_card_text">
+            {{ hotel.hotel[0].hotelBasicInfo.hotelSpecial }}
+          </p>
+          <div class="bl_card_price">
+            最低料金：
+            {{ hotel.hotel[0].hotelBasicInfo.hotelMinCharge }} ~
+          </div>
+          <div class="bl_card_review">
+            レビュー平均：
+            {{ hotel.hotel[0].hotelBasicInfo.reviewAverage }}
+          </div>
+          <NuxtLink
+            :to="{
+              path: '/hotel',
+              query: { hotelNo: hotel.hotel[0].hotelBasicInfo.hotelNo },
+            }"
+            class="bl_card_link"
+            >詳細へ</NuxtLink
+          >
+        </div>
       </li>
     </ul>
   </div>

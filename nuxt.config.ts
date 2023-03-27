@@ -16,6 +16,7 @@ export default {
       },
     },
   },
+  css: ["normalize.css", "/assets/scss/base.scss"],
   runtimeConfig: {
     public: {
       FIREBASE_API_KEY: process.env.FIREBASE_API_KEY || "",
