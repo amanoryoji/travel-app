@@ -1,0 +1,61 @@
+@import './color';
+@import './font';
+
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ',
+    Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  color: $color-font-light;
+  color: #333;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: $color-background;
+}
+
+body {
+  font-size: $font-size-base;
+}
+
+html,
+body,
+#__nuxt,
+#__layout {
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+div,
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+ol,
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+input,
+textarea,
+button,
+select {
+  appearance: none;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+:focus {
+  outline: none;
+}

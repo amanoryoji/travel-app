@@ -107,8 +107,8 @@ export const useTravelApi = () => {
   ) {
     await axios
       .get(
-        // "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426",
-        "https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426",
+        "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426",
+        // "https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426",
         {
           params: {
             applicationId: "1056638830656016957",
@@ -117,8 +117,8 @@ export const useTravelApi = () => {
             middleClassCode: large,
             smallClassCode: middle,
             detailClassCode: small,
-            checkinDate: '2023-04-01',
-            checkoutDate: '2023-04-02',
+            checkinDate: "2023-04-02",
+            checkoutDate: "2023-04-03",
             sort: "standard", // おすすめ順でsortできる
             page: page1,
             hits: 20,
@@ -166,8 +166,8 @@ export const useTravelApi = () => {
           params: {
             applicationId: "1056638830656016957",
             format: "json",
-            checkinDate: '2023-04-01',
-            checkoutDate: '2023-04-02',
+            checkinDate: "2023-04-02",
+            checkoutDate: "2023-04-03",
             hotelNo: targetHotelNo,
           },
         }
