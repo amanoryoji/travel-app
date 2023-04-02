@@ -35,7 +35,7 @@ export default {
       type: String,
     },
   },
-  emits: ["update:modelValue", "focus", "blur", "change"],
+  emits: ["update:modelValue", "focus", "blur", "change", "keydown"],
   setup(props, { emit }) {
     const model = computed({
       get: () => props.modelValue,
@@ -70,6 +70,7 @@ export default {
       @focus="$emit('focus')"
       @blur="$emit('blur')"
       @change="$emit('change', $event.target.value)"
+      @keydown.enter="$emit('keydown')"
     />
     <AErrorMessage
       :message="errorMessage"

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { ref } from "vue";
 
 type areaCode = {
   label: string;
@@ -18,8 +18,8 @@ export const useTravelApi = () => {
 
   /** 地区コード取得 */
   async function getAreaCode() {
-    await axios
-      .get(
+    try {
+      const response = await useFetch(
         "https://app.rakuten.co.jp/services/api/Travel/GetAreaClass/20131024",
         {
           params: {
@@ -28,21 +28,22 @@ export const useTravelApi = () => {
             formatVersion: 2,
           },
         }
-      )
-      .then((response) => {
-        getAreaResponse.value =
-          response.data.areaClasses.largeClasses[0][1].middleClasses;
+      );
+      getAreaResponse.value =
+        response.data.value.areaClasses.largeClasses[0][1].middleClasses;
+      /** 県取得 */
+      middleClassCode.value = getAreaResponse.value.map((middleClass) => {
+        return {
+          label: middleClass.middleClass[0].middleClassName,
+          value: middleClass.middleClass[0].middleClassCode,
+        };
       });
-  }
-
-  /** 県取得 */
-  function getLargeCode() {
-    middleClassCode.value = getAreaResponse.value.map((middleClass) => {
-      return {
-        label: middleClass.middleClass[0].middleClassName,
-        value: middleClass.middleClass[0].middleClassCode,
-      };
-    });
+      console.log(
+        response.data.value.areaClasses.largeClasses[0][1].middleClasses
+      );
+    } catch (e) {
+      return Promise.reject(e);
+    }
   }
 
   /** セレクトボックスで選択された県の詳細情報を取得 */
@@ -103,10 +104,10 @@ export const useTravelApi = () => {
     large: string,
     middle: string,
     small: string,
-    page1: number
+    page: number
   ) {
-    await axios
-      .get(
+    try {
+      const response = await useFetch(
         "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426",
         // "https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426",
         {
@@ -117,69 +118,62 @@ export const useTravelApi = () => {
             middleClassCode: large,
             smallClassCode: middle,
             detailClassCode: small,
-            checkinDate: "2023-04-02",
-            checkoutDate: "2023-04-03",
-            sort: "standard", // おすすめ順でsortできる
-            page: page1,
+            checkinDate: "2023-04-15",
+            checkoutDate: "2023-04-16",
+            sort: "standard",
+            page,
             hits: 20,
           },
         }
-      )
-      .then((response) => {
-        getHotel.value = response.data.hotels;
-        pageCount.value = response.data.pagingInfo.pageCount;
-      })
-      .catch((error) => {
-        alert(error);
-      });
+      );
+      getHotel.value = response.data.value.hotels;
+      pageCount.value = response.data.value.pagingInfo.pageCount;
+    } catch (e) {
+      return Promise.reject(e);
+    }
   }
 
   /** キーワード検索API */
-  async function keyWordSearch(inputKeyword: string) {
-    await axios
-      .get(
+  async function keyWordSearch(inputKeyword: string, page: number) {
+    try {
+      const response = await useFetch(
         "https://app.rakuten.co.jp/services/api/Travel/KeywordHotelSearch/20170426",
         {
           params: {
             applicationId: "1056638830656016957",
             format: "json",
             keyword: inputKeyword,
+            page,
           },
         }
-      )
-      .then((response) => {
-        getHotel.value = response.data.hotels;
-        console.log(response);
-      })
-      .catch((error) => {
-        alert(error);
-      });
+      );
+      getHotel.value = response.data.value.hotels;
+      pageCount.value = 11;
+    } catch (e) {
+      return Promise.reject(e);
+    }
   }
 
   /** 詳細ページの空室検索API */
   async function targetVacantHotel(targetHotelNo: number) {
-    await axios
-      .get(
+    try {
+      const response = await useFetch(
         "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426",
         // "https://app.rakuten.co.jp/services/api/Travel/HotelDetailSearch/20170426",
         {
           params: {
             applicationId: "1056638830656016957",
             format: "json",
-            checkinDate: "2023-04-02",
-            checkoutDate: "2023-04-03",
+            checkinDate: "2023-04-15",
+            checkoutDate: "2023-04-16",
             hotelNo: targetHotelNo,
           },
         }
-      )
-      .then((response) => {
-        getHotel.value = response.data.hotels[0].hotel;
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-        alert(error);
-      });
+      );
+      getHotel.value = response.data.value.hotels[0].hotel;
+    } catch (e) {
+      return Promise.reject(e);
+    }
   }
 
   return {
@@ -189,7 +183,6 @@ export const useTravelApi = () => {
     getHotel,
     pageCount,
     getAreaCode,
-    getLargeCode,
     getMiddleCode,
     getSmallCode,
     getVacantHotel,
