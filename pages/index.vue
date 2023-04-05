@@ -280,13 +280,13 @@ onMounted(async () => {
             <p class="bl_card_list el_text">
               {{ hotel.hotel[0].hotelBasicInfo.hotelSpecial }}
             </p>
-            <div class="bl_card_price">
+            <div class="bl_card_list el_price">
               <label class="el_label">最安料金</label>
-              {{ hotel.hotel[0].hotelBasicInfo.hotelMinCharge }} 円~
+              {{ hotel.hotel[0].hotelBasicInfo.hotelMinCharge }}円~
             </div>
             <div
               v-if="hotel.hotel[0].hotelBasicInfo.reviewAverage"
-              class="bl_card_review"
+              class="bl_card_list el_review"
             >
               レビュー平均：
               {{ hotel.hotel[0].hotelBasicInfo.reviewAverage }}
@@ -308,10 +308,18 @@ onMounted(async () => {
 .ly_container_main {
   padding: 50px;
 
+  .el_pageTitle{
+    margin-bottom: 30px;
+  }
+
+  .bl_text{
+    margin-bottom: 30px;
+  }
+
   .bl_search {
     &_input {
       display: flex;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
 
       .ly_textInputWrapper {
         width: 300px;
@@ -334,15 +342,42 @@ onMounted(async () => {
   }
 
   .bl_result {
+    .bl_paginationButton {
+      justify-content: center;
+    }
     .bl_cardUnit {
       display: flex;
       flex-wrap: wrap;
 
       .bl_card {
         display: flex;
+        margin-bottom: 50px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
 
         &_img {
           width: 50%;
+          max-width: 500px;
+          margin-right: 2%;
+
+          .bl_card_imgWrapper {
+            margin: 0;
+          }
+        }
+
+        &_body {
+          width: 48%;
+
+          .bl_card_list {
+            margin-bottom: 20px;
+          }
+
+          .el_name {
+            font-size: $font-size-base;
+            font-weight: 700;
+          }
         }
       }
     }

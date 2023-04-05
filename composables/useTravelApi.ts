@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { ref } from "vue";
 
 type areaCode = {
@@ -19,7 +20,7 @@ export const useTravelApi = () => {
   /** 地区コード取得 */
   async function getAreaCode() {
     try {
-      const response = await useFetch(
+      const response = await axios.get(
         "https://app.rakuten.co.jp/services/api/Travel/GetAreaClass/20131024",
         {
           params: {
@@ -30,7 +31,7 @@ export const useTravelApi = () => {
         }
       );
       getAreaResponse.value =
-        response.data.value.areaClasses.largeClasses[0][1].middleClasses;
+        response.data.areaClasses.largeClasses[0][1].middleClasses;
       /** 県取得 */
       middleClassCode.value = getAreaResponse.value.map((middleClass) => {
         return {
@@ -38,9 +39,6 @@ export const useTravelApi = () => {
           value: middleClass.middleClass[0].middleClassCode,
         };
       });
-      console.log(
-        response.data.value.areaClasses.largeClasses[0][1].middleClasses
-      );
     } catch (e) {
       return Promise.reject(e);
     }

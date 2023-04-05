@@ -3,8 +3,10 @@ const { signIn } = useAuth();
 
 const userEmail = ref("");
 const userPassWord = ref("");
+const loading = ref(false);
 
 const login = function (userEmail: string, userPassWord: string) {
+  loading.value = true;
   signIn(userEmail, userPassWord);
 };
 </script>
@@ -28,7 +30,11 @@ const login = function (userEmail: string, userPassWord: string) {
       @update:model-value="(newValue) => (userPassWord = newValue)"
       @keydown="login(userEmail, userPassWord)"
     />
-    <AButton label="ログイン" @click="login(userEmail, userPassWord)" />
+    <AButton
+      label="ログイン"
+      :loading="loading"
+      @click="login(userEmail, userPassWord)"
+    />
     <NuxtLink to="/register">新規会員登録はこちら</NuxtLink>
   </div>
 </template>

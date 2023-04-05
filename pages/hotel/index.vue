@@ -14,7 +14,10 @@ onMounted(async () => {
   <div v-if="getHotel">
     <pre>
     {{ getHotel }}
-  </pre
-    >
+  </pre>
+  </div>
+
+  <div>
+    
   </div>
 </template>

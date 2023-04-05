@@ -1,6 +1,4 @@
 <script lang="ts">
-// import LoadingSpinner from "~/components/atoms/LoadingSpinner.vue";
-
 type Variant =
   | "primary"
   | "secondary"
@@ -108,9 +106,9 @@ export default {
     />
     <span class="bl_button_label">{{ label }}</span>
     <img v-if="icon && isIconRight" :src="icon" alt="" />
-    <!-- <div v-show="loading" class="bl_button_loadingSpinner">
+    <div v-show="loading" class="bl_button_loadingSpinner">
       <LoadingSpinner size="xxsm" />
-    </div> -->
+    </div>
   </button>
 </template>
 
